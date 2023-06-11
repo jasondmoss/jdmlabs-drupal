@@ -1,0 +1,78 @@
+{#
+/**
+ * @file
+ * Template: Default Menu.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% import _self as menus %}
+{{ menus.menu_links(items, attributes, 0) }}
+{% macro menu_links(items, attributes, menu_level) -%}
+  {% import _self as menus %}
+  {% if items -%}
+
+    {% if menu_level == 0 -%}
+      <ul{{ attributes.addClass('menu') }}>
+    {% elseif menu_level == 1 -%}
+      <ul{{ attributes.removeClass('menu').addClass('submenu sub--2') }}>
+    {% elseif menu_level == 2 -%}
+      <ul{{ attributes.removeClass('menu').addClass('submenu sub--3') }}>
+    {% else -%}
+      <ul{{ attributes.removeClass('menu').addClass('submenu sub--1') }}>
+    {% endif -%}
+
+    {% set attributes = attributes.removeClass(primary_nav_level) %}
+    {% for item in items -%}
+      {% if item.url.isrouted and item.url.routeName == '<nolink>' -%}
+        {% set menu_item_type = 'nolink' %}
+      {% elseif item.url.isrouted and item.url.routeName == '<button>' -%}
+        {% set menu_item_type = 'button' %}
+      {% else -%}
+        {% set menu_item_type = 'link' %}
+      {% endif -%}
+      {% set item_classes = [
+        menu_level ? 'submenu-item' : 'menu-item',
+        item.in_active_trail ? 'active-trail',
+        item.below ? 'has-children'
+      ] %}
+      <li{{ item.attributes.addClass(item_classes) }}>
+        {% set aria_id = ('submenu--' ~ item.title)|clean_id %}
+        {% set parent_link_class = [
+          menu_level ? 'submenu-link' : 'menu-link',
+        ] %}
+        {% set child_link_class = [ 'submenu-link' ] %}
+        {% if menu_item_type == 'link' or menu_item_type == 'nolink' -%}
+          {% set link_text %}
+            <span>{{ item.title|raw }}</span>
+          {% endset %}
+          {{ link(link_text, item.url, { 'class': parent_link_class }) }}
+          {% if item.below -%}
+            {% set attributes = attributes.removeClass('is-active') %}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {% endif -%}
+        {% elseif menu_item_type == 'button' -%}
+          {% set button_label %}
+            <span>{{ item.title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3.9999 2" class="caret" role="img" aria-label="Caret Icon">
+              <path d="m3.9075 0.079882c0.12332 0.10651 0.12332 0.27919 0 0.38568l-1.6842 1.4546c-0.12332 0.10651-0.32324 0.10651-0.44657 0l-1.6842-1.4546c-0.12332-0.1065-0.12332-0.27918 0-0.38568 0.12332-0.10651 0.32327-0.10651 0.4466 0l1.4609 1.2617 1.4609-1.2617c0.12333-0.10651 0.32324-0.10651 0.44657 0z" clip-rule="evenodd" fill-rule="evenodd" stroke-width=".3913"/>
+            </svg>
+          {% endset %}
+          {{ link(button_label, item.url, {
+            'class': parent_link_class,
+            'aria-expanded': 'false',
+            'aria-controls': item.below ? aria_id : false
+          }) }}
+          {% set attributes = attributes.removeClass('is-active').setAttribute('id', aria_id) %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif -%}
+      </li>
+    {% endfor -%}
+    </ul>
+  {% endif -%}
+{% endmacro -%}

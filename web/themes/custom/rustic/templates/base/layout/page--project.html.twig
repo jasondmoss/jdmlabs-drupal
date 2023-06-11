@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Template: Page.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set nodeedit = node ? 'node/' ~ node.id : '' %}
+{% set hasMasthead = page.masthead|render|striptags('<drupal-render-placeholder>')|trim is not empty %}
+{% set hasContentSub = page.subcontent|render|striptags('<drupal-render-placeholder>')|trim is not empty %}
+{% set hasSidebar = page.sidebar|render|striptags('<drupal-render-placeholder>')|trim is not empty %}
+{% include '@rustic/_partial/site--header.html.twig' %}
+<main id="siteContent" class="site--content" data-quickedit-entity-id="{{ nodeedit }}" aria-label="{{ 'Main Content'|t }}">
+  <a id="contentMain" tabindex="-1"></a>
+  {% if hasSidebar -%}
+    <header id="siteHeader" class="site--header" role="banner">
+      {{ page.masthead }}
+    </header>
+  {% endif %}
+  <div class="drupal-system">
+    {{ page.system }}
+  </div>
+  {# <section class="content--main"> #}
+  {{ page.content }}
+  {# </section> #}
+  {% if hasSidebar -%}
+    <aside class="contentpage--project.html.twig--side">
+      {{ page.sidebar }}
+    </aside>
+  {% endif -%}
+  {% if hasContentSub -%}
+    {# <section class="content--sub"> #}
+    {{ page.subcontent }}
+    {# </section> #}
+  {% endif -%}
+  {% include '@rustic/_partial/page--footer.html.twig' %}
+</main>
+{% include '@rustic/_partial/site--footer.html.twig' %}

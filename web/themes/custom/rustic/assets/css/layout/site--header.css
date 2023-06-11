@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * LAYOUT: Page Header
+ *
+ * @category Stylesheet
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+
+
+.site--header {
+  display: grid;
+  grid-template-columns: 100%;
+  align-items: start;
+  justify-items: center;
+  gap: 2rem 5%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.site--header > * {
+  width: 100%;
+}
+
+/*.site--header .site--branding {}*/
+
+
+@media screen {
+  @media (min-width: 25rem) {
+    .site--header {
+      grid-template-columns: 60% 30%;
+      gap: 0 10%;
+      align-items: center;
+      justify-items: start;
+    }
+  }
+
+  @media (min-width: 41.625rem) {
+    .site--header {
+      grid-template-columns: 100%;
+    }
+
+    .site--header .site--branding {
+      grid-column: 1;
+      grid-row: 1/span 2;
+      width: fit-content;
+    }
+
+    .site--header .menu--main {
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: end;
+      width: fit-content;
+    }
+  }
+}

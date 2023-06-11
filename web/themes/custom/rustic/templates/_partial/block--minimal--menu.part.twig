@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Template: Block -- Menu.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  'navigation'
+] %}
+{% set node = content["#block_content"] %}
+{% set hasLinks = node.field_links is not empty %}
+<nav itemscope itemtype="https://schema.org/SiteNavigationElement"{{ attributes.addClass(classes) }} aria-label="{{ node.info.value|raw }}">
+  {{ title_suffix }}
+  {% if hasLinks %}
+    <ul class="menu">
+      {% for row in node.field_links %}
+        <li class="menu-item">
+          <a rel="external" class="menu-link" href="{{ row.entity.field_link.0.uri }}" title="My profile at {{ row.entity.field_link.0.title }}">
+            {{ drupal_image(row.entity.field_media.0.entity.field_media_image.entity.fileuri, '', {
+              class: 'icon',
+              alt: row.entity.field_media.0.entity.field_media_image.0.alt
+            }) }}
+            <span>{{ row.entity.field_link.0.title }}</span>
+          </a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</nav>

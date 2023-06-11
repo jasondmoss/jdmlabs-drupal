@@ -1,0 +1,25 @@
+{
+    "name": "jdmlabs-2023-d9",
+    "package": "DRUPAL10",
+    "subPackage": "RUSTIC",
+    "version": "1.0.0",
+    "copyright": "2005-2023 Jason D Moss. All rights reserved.",
+    "description": "JdmLabs: The Online Laboratory and personal website of Jason D. Moss.",
+    "homepage": "https://www.jdmlabs.com/",
+    "license": "SEE LICENSE IN <LICENSE>",
+    "author": {
+        "name": "Jason Moss",
+        "email": "work@jdmlabs.com"
+    },
+    "devDependencies": {
+        "grunt": "latest",
+        "stylelint": "latest",
+        "grunt-stylelint": "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-notify": "latest"
+    },
+    "scripts": {
+        "watch": "grunt watch"
+    }
+}

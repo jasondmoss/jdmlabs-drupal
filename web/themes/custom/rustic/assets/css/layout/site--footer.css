@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * LAYOUT: Site Footer
+ *
+ * @category Stylesheet
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+
+
+.site--footer {
+  gap: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--debug--teal);
+}
+
+.site--footer > * {
+  width: 100%;
+}
+
+.site--footer .site--credits {
+  text-align: center;
+  font-size: 0.8rem;
+}

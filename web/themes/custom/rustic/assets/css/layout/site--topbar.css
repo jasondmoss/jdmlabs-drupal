@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * LAYOUT: Site Topbar
+ *
+ * @category Stylesheet
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+
+body.logged-in .site--topbar {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  background-color: var(--system--danger);
+  box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 0.3333);
+}

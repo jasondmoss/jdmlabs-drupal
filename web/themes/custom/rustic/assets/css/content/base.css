@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * CONTENT: Base
+ *
+ * @category Stylesheet
+ * @package JDMLABS
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights freely given.
+ * @link https://www.jdmlabs.com/
+ */
+
+
+.dialog-off-canvas-main-canvas img {
+  max-width: 100%;
+  border-style: none;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.dialog-off-canvas-main-canvas svg {
+  /**
+   * Workaround for the SVG overflow bug in IE10/11 is still required.
+   *
+   * @link  https://github.com/twbs/bootstrap/issues/26878
+   */
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.dialog-off-canvas-main-canvas p {
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.dialog-off-canvas-main-canvas p:last-child {
+  margin-bottom: 0;
+}
+
+.dialog-off-canvas-main-canvas .site--content a {
+  padding: 0.25rem 0.025rem 0.15rem;
+  text-underline-offset: 0.27rem;
+}
+
+.dialog-off-canvas-main-canvas .site--content a,
+.dialog-off-canvas-main-canvas .site--content a:link,
+.dialog-off-canvas-main-canvas .site--content a:visited {
+  text-decoration: underline dotted;
+}
+
+.dialog-off-canvas-main-canvas .site--content a:active,
+.dialog-off-canvas-main-canvas .site--content a:hover,
+.dialog-off-canvas-main-canvas .site--content a:focus {
+  text-decoration: underline solid;
+}
+
+.dialog-off-canvas-main-canvas strong {
+  font-weight: 700;
+}

@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Template: Block.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class
+] %}
+{% if attributes['data-label'].0 == 'false' %}
+  <div{{ attributes.addClass(classes)|without('aria-labelledby') }} aria-label="{{ label }}">
+{% else %}
+  {% set labelId = attributes.id ~ 'Label' %}
+  <div{{ attributes.addClass(classes)|without('aria-labelledby') }} aria-labelledby="{{ labelId }}">
+    <h2 id="{{ labelId }}" class="block-title">{{ label }}</h2>
+{% endif %}
+    {{ title_suffix }}
+    {% block content -%}
+      {{ content }}
+    {% endblock -%}
+  </div>

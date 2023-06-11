@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Template: Container - View - Taxonomy (Client).
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set classes = [ 'h-card', 'client' ] %}
+{% set permalink = url('entity.taxonomy_term.canonical', { 'taxonomy_term': client.tid }) %}
+<figure itemscope itemid="{{ permalink }}" itemprop="{{ client.schema.type }}" itemtype="{{ client.schema.url }}"
+  {{ attributes.addClass(classes) -}}
+>
+  <link itemprop="sameAs" class="u-uid" href="{{ client.website }}">
+  <a itemprop="url" class="u-url" href="{{ permalink }}">
+    <figcaption>
+      <h3 itemprop="name" class="p-name">{{ client.name }}</h3>
+    </figcaption>
+    {{ drupal_image(client.logo.uri, '', {
+      itemprop: 'logo',
+      loading: 'lazy',
+      decoding: 'async',
+      class: 'u-logo',
+      width: client.logo.width,
+      height: client.logo.height,
+      alt: client.logo.alt
+    }) }}
+  </a>
+</figure>

@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * COMPONENT - NAV: Main Menu
+ *
+ * @category Stylesheet
+ * @package JDMLABS
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights freely given.
+ * @link https://www.jdmlabs.com/
+ */
+
+.menu--main .menu {
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.menu--main .menu .menu-item {
+  width: 100%;
+}
+
+.menu--main .menu .menu-link {
+  text-align: center;
+  text-underline-offset: 0.35rem;
+}
+
+.menu--main .menu .menu-link,
+.menu--main .menu .menu-link:link,
+.menu--main .menu .menu-link:visited {
+  text-decoration: underline dotted;
+}
+
+.menu--main .menu .menu-link:active,
+.menu--main .menu .menu-link:hover,
+.menu--main .menu .menu-link:focus {
+  text-decoration: underline double;
+}
+
+
+@media screen {
+  @media (min-width: 25rem) {
+    .menu--main .menu {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .menu--main .menu .menu-link {
+      text-align: right;
+    }
+
+    .menu--main .menu .menu-link span {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 41.625rem) {
+    .menu--main .menu {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0 2rem;
+    }
+
+    .menu--main .menu .menu-item {
+      width: fit-content;
+    }
+
+    .menu--main .menu .menu-link {
+      /*text-align: center;*/
+      padding: 0;
+    }
+
+    .menu--main .menu .menu-link span {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 50rem) {
+    .menu--main .menu .menu-link span {
+      font-size: 1.25rem;
+    }
+  }
+}

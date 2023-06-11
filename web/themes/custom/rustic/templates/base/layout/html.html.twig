@@ -1,0 +1,63 @@
+{#
+/**
+ * @file
+ * Template: HTML.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set body_classes = [
+  logged_in ? 'logged-in',
+  is_front ? 'front' : 'not-front'
+] %}
+{% set hasTopbar = page.topbar|render|striptags('<drupal-render-placeholder>')|trim is not empty %}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+<head>
+  <head-placeholder token="{{ placeholder_token }}">
+    <title>{{ head_title|safe_join(' &#47; ') }}</title>
+    <style>@font-face {
+        font-family: "Berkeley Mono";
+        font-style: normal;
+        font-weight: normal;
+        font-display: swap;
+        src: url("{{ host }}/themes/custom/rustic/assets/fonts/berkeley-mono/berkeley-mono--regular.woff2") format("woff2");
+      }</style>
+    <css-placeholder token="{{ placeholder_token }}">
+      <js-placeholder token="{{ placeholder_token }}">
+</head>
+<body itemscope{{ attributes.addClass(body_classes) }}>
+<meta itemprop="email" content="work@jdmlabs.com">
+<meta itemprop="worksFor" content="JdmLabs">
+<meta itemprop="worksFor" content="Outcrop Communications">
+<a href="#contentMain" class="visually-hidden focusable">{{ 'Skip to main content'|t }}</a>
+{{ page_top }}
+{% if logged_in or hasTopbar -%}
+  <div id="toolbar-site" class="site--topbar" role="banner">
+    {% if hasTopbar -%}
+      {{ page.topbar }}
+    {% endif -%}
+    {#{% if logged_in -%}
+      <nav itemscope itemtype="https://schema.org/SiteNavigationElement" id="userMenu" class="block navigation menu--user" role="navigation" aria-label="User navigation">
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="/user/me" class="menu-link" title=""><span>Profile</span></a>
+          </li>
+          <li class="menu-item">
+            <a href="/user/logout" class="menu-link" title=""><span>Logout</span></a>
+          </li>
+        </ul>
+      </nav>
+    {% endif -%}#}
+  </div>
+{% endif -%}
+{{ page }}
+{{ page_bottom }}
+<js-bottom-placeholder token="{{ placeholder_token }}">
+</body>
+</html>

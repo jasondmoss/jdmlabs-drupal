@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * LAYOUT: Site (Base)
+ *
+ * @category Stylesheet
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+
+
+body {
+  max-width: var(--container-max);
+  margin-right: auto;
+  margin-left: auto;
+  animation-duration: 0.15s;
+  animation-fill-mode: both;
+  animation-delay: 0.15s;
+  animation-name: fadeIn;
+}
+
+.dialog-off-canvas-main-canvas,
+.site--topbar,
+.site--header,
+.site--content,
+.site--footer {
+  position: relative;
+  width: 100%;
+}
+
+.dialog-off-canvas-main-canvas,
+.site--topbar > * {
+  max-width: var(--constraint--website);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.dialog-off-canvas-main-canvas {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 2rem 0;
+  align-content: start;
+  align-items: start;
+  transition: width 0.15s ease-in-out,
+  height 0.15s ease-in-out,
+  margin 0.15s ease-in-out,
+  padding 0.15s ease-in-out;
+}
+
+.dialog-off-canvas-main-canvas * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  text-decoration: none;
+}
+
+.site--header,
+.site--content,
+.site--footer {
+  grid-column: 1;
+}
+
+.site--header {
+  grid-row: 1;
+  align-self: start;
+}
+
+.site--content {
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.site--footer {
+  grid-row: 3;
+  align-self: end;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+
+@media screen {
+  @media (max-width: 82rem) {
+    .dialog-off-canvas-main-canvas {
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+  }
+}

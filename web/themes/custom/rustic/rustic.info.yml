@@ -1,0 +1,25 @@
+name: 'Rustic'
+type: theme
+description: "JdmLabs: The Online Laboratory and personal website of Jason D. Moss"
+core_version_requirement: ^10
+version: '1.0.0'
+project: 'rustic'
+base theme: false
+regions:
+  topbar: 'Site -- Topbar'
+  header: 'Site -- Header'
+  system: 'Site -- System Area'
+  footer: 'Site -- Footer'
+  masthead: 'Page -- Masthead'
+  content: 'Page -- Content - Main'
+  subcontent: 'Page -- Content: Sub'
+  sidebar: 'Page -- Content: Complimentary'
+libraries:
+  #  - rustic/almond-css
+  - rustic/rustic-assets
+libraries-override:
+  toolbar/toolbar:
+    js:
+      js/views/ToolbarVisualView.js: assets/js/override/ToolbarVisualView.js
+ckeditor_stylesheets:
+  - assets/css/system/ckeditor5.css

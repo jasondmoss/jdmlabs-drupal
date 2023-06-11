@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * Template: View
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set classes = [
+  'view',
+  'view-' ~ id|clean_class,
+  'view-id-' ~ id,
+  'view-display-id-' ~ display_id,
+  dom_id ? 'js-view-dom-id-' ~ dom_id
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% if title -%}
+    {{ title }}
+  {% endif -%}
+  {{ title_suffix }}
+  {% if header -%}
+    <header class="view-header">
+      {{ header }}
+    </header>
+  {% endif -%}
+  {% if exposed -%}
+    <aside class="view-filters">
+      {{ exposed }}
+    </aside>
+  {% endif -%}
+  {% if attachment_before -%}
+    <div class="attachment attachment-before">
+      {{ attachment_before }}
+    </div>
+  {% endif -%}
+  {% if rows -%}
+    <div class="view-content row">
+      {{ rows }}
+    </div>
+  {% elseif empty -%}
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+  {% endif -%}
+  {% if pager -%}
+    {{ pager }}
+  {% endif -%}
+  {% if attachment_after -%}
+    <div class="attachment attachment-after">
+      {{ attachment_after }}
+    </div>
+  {% endif -%}
+  {% if more -%}
+    {{ more }}
+  {% endif -%}
+  {% if footer -%}
+    <footer class="view-footer">
+      {{ footer }}
+    </footer>
+  {% endif -%}
+  {% if feed_icons -%}
+    <nav class="feed-icons">
+      {{ feed_icons }}
+    </nav>
+  {% endif -%}
+</div>

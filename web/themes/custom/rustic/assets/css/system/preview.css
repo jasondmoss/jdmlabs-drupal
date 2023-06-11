@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * SYSTEM: Admin Node Preview
+ *
+ * @category Stylesheet
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+
+
+.node-preview-container {
+  position: relative;
+  height: auto;
+  margin: 0 auto;
+  /* border-bottom: 2px solid var(--gray);
+  background-color: #fff; */
+}
+
+.node-preview-container .node-preview-form-select {
+  display: flex;
+  align-items: center;
+}
+
+.node-preview-container .node-preview-backlink,
+.node-preview-container .form-item-view-mode {
+  float: left;
+  width: 50%;
+}
+
+.node-preview-container .node-preview-backlink {
+  font-weight: 700;
+}
+
+.node-preview-container .form-item-view-mode {
+  position: relative;
+  align-items: center;
+  text-align: right;
+}
+
+.node-preview-container .form-item-view-mode label {
+  position: relative;
+  top: -1rem;
+  padding-right: 1rem;
+}
+
+.node-preview-container .form-item-view-mode .selector {
+  width: 10rem;
+}

@@ -1,0 +1,293 @@
+<?php
+
+/**
+ * @file
+ * Theme Functions.
+ *
+ * @link       https://www.jdmlabs.com/
+ * @package    DRUPAL10
+ * @subpackage rustic
+ * @author     Jason D. Moss <jason@jdmlabs.com>
+ * @copyright  2005-2023 Jason D. Moss. All rights reserved.
+ * @category   ThemeFunctions
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\file\Entity\File;
+use Drupal\node\NodeInterface;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Get the word count of {$text}.
+ *
+ * @param string $text
+ *
+ * @return int
+ * @method get_word_count
+ */
+function get_word_count(string $text): int
+{
+    return str_word_count(strip_tags($text));
+}
+
+
+/**
+ * @param Drupal\taxonomy\Entity\Term $term
+ *
+ * @return array
+ * @method pull_client_data
+ * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+ */
+function pull_client_data(Term $term): array
+{
+    $data = [];
+
+    $data['tid'] = $term->get('tid')->value;
+    $data['name'] = $term->get('name')->value;
+    $data['website'] = $term->get('field_website')->first()->get('uri')->getValue();
+
+    $media = $term->referencedEntities()[1]->get('field_media_image')->first();
+
+    $logo = File::load($media->getValue()['target_id']);
+
+    $data['logo']['uri'] = $logo->getFileUri();
+    $data['logo']['width'] = $media->get('width')->getValue();
+    $data['logo']['height'] = $media->get('height')->getValue();
+    $data['logo']['alt'] = $media->get('alt')->getValue();
+
+    $data['schema']['type'] = $term->referencedEntities()[2]->get('name')->first()->value;
+    $data['schema']['url'] = $term->referencedEntities()[2]->field_schema_url->uri;
+
+    return $data;
+}
+
+
+/**
+ * @param array &$variables Array of existing variable values.
+ *
+ * @method rustic_preprocess_html
+ */
+function rustic_preprocess_html(array &$variables): void
+{
+    $classes[] = '';
+
+    $itemtype = 'https://schema.org/WebSite';
+
+    $variables['is_front'] = Drupal::service('path.matcher')->isFrontPage();
+
+    /** -- Error Pages. */
+
+    if (! is_null(
+        Drupal::requestStack()->getCurrentRequest()->attributes->get('exception')
+    )) {
+        $statusCode = Drupal::requestStack()
+            ->getCurrentRequest()
+            ->attributes->get('exception')
+            ->getStatusCode();
+
+        if (in_array($statusCode, [401, 403, 404])) {
+            $classes[] = 'page--error';
+        }
+    }
+
+    /** -- By path (Non-node items). */
+
+    $pathCurrent = Drupal::service('path.current')->getPath();
+
+    $pathArgs = explode('/', ltrim($pathCurrent, '/'));
+
+    if (isset($pathArgs[0])) {
+        if ('search' == $pathArgs[0]) {
+            $classes[] = 'page--search-results';
+        } elseif ('user' == $pathArgs[0]) {
+            $classes[] = 'page-user--' . $pathArgs[1];
+        }
+    }
+
+    /** -- By taxonomy term. */
+
+    if ('entity.taxonomy_term.canonical' == Drupal::routeMatch()->getRouteName()) {
+        $term = Drupal::routeMatch()->getParameter('taxonomy_term');
+
+        $variables['term_id'] = $term->id();
+        $variables['vocabulary_id'] = $term->bundle();
+
+        $classes[] = 'type--term';
+        $classes[] = 'term--' . $term->id();
+        $classes[] = 'term--' . strtolower(
+            Html::cleanCssIdentifier($term->getName())
+        );
+    }
+
+    /** -- By node. */
+
+    if (! empty($node = Drupal::routeMatch()->getParameter('node'))) {
+        $variables['node'] = $node;
+
+        $classes[] = 'node-' . $node->id();
+        $classes[] = 'type-' . $node->getType();
+
+        if ('page' == $node->bundle()) {
+            $pathCurrentAlias = Drupal::service('path_alias.manager')
+                ->getAliasByPath($pathCurrent);
+
+            $classes[] = 'page--' . basename($pathCurrentAlias);
+        }
+
+        if (5 == $node->id()) {
+            $itemtype = 'https://schema.org/CollectionPage';
+        }
+
+        if (6 == $node->id()) {
+            $itemtype = 'https://schema.org/ContactPage';
+        }
+
+        if ('project' == $node->bundle()) {
+            $itemtype = 'https://schema.org/ItemPage';
+        }
+    }
+
+    $variables['attributes']['itemtype'][] = $itemtype;
+    $variables['attributes']['class'] = $classes;
+}
+
+
+/**
+ * @param array $variables Array of existing variable values.
+ *
+ * @method rustic_preprocess_node
+ */
+function rustic_preprocess_node(array &$variables): void
+{
+    if (empty($entity = (object) $variables['node'])
+        && ! $entity instanceof NodeInterface
+    ) {
+        return;
+    }
+
+    /** -- Client data */
+
+//    if ('project' == $entity->bundle()
+//        && ! empty($term = $entity->get('field_client')->referencedEntities())
+//    ) {
+//        $variables['client'] = get_client_data($term);
+//    }
+
+    $wc = 0;
+    if (isset($entity->body) && ! $entity->get('body')->isEmpty()) {
+        $wc = get_word_count($entity->body->getString());
+    }
+
+    $variables['wordCount'] = $wc;
+
+    // Open Graph 'Publisher'.
+    $variables['publisher'] = 'jasondmoss';
+}
+
+
+/**
+ * @param array &$variables Array of existing variable values.
+ *
+ * @method rustic_preprocess_page
+ */
+function rustic_preprocess_page(array &$variables): void
+{
+    /** -- Node. */
+
+    if (isset($variables['node']) && $variables['node'] instanceof NodeInterface) {
+        $entity = $variables['node'];
+        $text = '';
+
+        if ($entity->hasField('body')
+            && ! empty($content = $entity->get('body')->getString())
+        ) {
+            $text = get_word_count($content);
+        }
+
+        if ($entity->hasField('field_description')
+            && ! empty($content = $entity->get('field_description')->getString())
+        ) {
+            $text = get_word_count($content);
+        }
+
+        $variables['wordCount'] = $text;
+    }
+
+    /** -- Taxonomy term. */
+
+    if (Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical') {
+        $term = Drupal::routeMatch()->getParameter('taxonomy_term');
+
+        // Make sure Twig has full term data.
+        $variables['term'] = $term;
+    }
+
+    // Open Graph 'Publisher'.
+    $variables['publisher'] = 'jasondmoss';
+}
+
+
+/**
+ * @param $variables
+ *
+ * @return void
+ * @method rustic_preprocess_taxonomy_term
+ * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+ */
+function rustic_preprocess_taxonomy_term(&$variables): void
+{
+    // Client.
+    $variables['client'] = isset($variables['term']->vid->target_id)
+        ? pull_client_data($variables['term'])
+        : [];
+//    $variables['client'] = ('client' == $variables['term']->vid->target_id)
+//        ? pull_client_data($variables['term'])
+//        : [];
+}
+
+
+/**
+ * @param array &$suggestions Array of existing suggestion values.
+ * @param array &$variables Array of existing variable values.
+ *
+ * @method rustic_theme_suggestions_container_alter
+ */
+function rustic_theme_suggestions_container_alter(
+    array &$suggestions,
+    array &$variables
+): void {
+    $name = $type = '';
+
+    if (isset($variables['element']['#name'])) {
+        $name = $variables['element']['#name'];
+    }
+
+    if (isset($variables['element']['#type'])) {
+        $type = $variables['element']['#type'];
+    }
+
+    array_unshift($suggestions, 'container__' . $type . '__' . $name);
+}
+
+
+/**
+ * @param array &$suggestions
+ *
+ * @method rustic_theme_suggestions_page_alter
+ */
+function rustic_theme_suggestions_page_alter(array &$suggestions): void
+{
+    if (! empty($node = Drupal::routeMatch()->getParameter('node'))
+        && $node instanceof NodeInterface
+    ) {
+        $suggestions[] = 'page__' . $node->bundle();
+    }
+
+    if (Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical'
+        && $tid = Drupal::routeMatch()->getRawParameter('taxonomy_term')
+    ) {
+        $term = Term::load($tid);
+
+        $suggestions[] = 'page__taxonomy__' . $term->bundle();
+    }
+}

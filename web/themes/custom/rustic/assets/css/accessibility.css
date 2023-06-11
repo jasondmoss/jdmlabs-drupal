@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * GLOBAL: Accessibility.
+ *
+ * @category Stylesheet
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+
+:is(a, button, input, summary, textarea) {
+  --outline-color: #000;
+  --outline-offset: 0.075rem;
+  --outline-size: 0.175rem;
+  --outline-style: dashed;
+}
+
+:is(a, button:not(.toggle), input, textarea, summary):focus-visible {
+  outline: var(--outline-size) var(--outline-style) var(--outline-color);
+  outline-offset: var(--outline-offset);
+}
+
+:is(a, button:not(.toggle), input, textarea, summary):focus:not(:focus-visible) {
+  outline: none;
+}
+
+button {
+  --outline-offset: -0.15rem;
+}
+
+input::focus {
+  --outline-style: none;
+}
+
+input::focus-visible {
+  --outline-style: dashed;
+}
+
+summary {
+  --outline-offset: 0.5em;
+  --outline-style: dotted;
+}
+
+::selection {
+  background-color: var(--background--highlight);
+  color: #000;
+}
+
+/** -- Screen reader. */
+
+.sr-only {
+  overflow: hidden;
+  clip-path: inset(50%);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.sr-only:active,
+.sr-only:focus {
+  overflow: visible;
+  clip-path: inset(0);
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  white-space: normal;
+}
+
+
+/** -- Skip to content. */
+
+.skip-content {
+  --outline-offset: -0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding: 3rem 1rem;
+  background-color: var(--yellow);
+  text-decoration: overline underline dashed var(--system--success-light);
+  text-underline-offset: 0.65rem;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #000;
+}

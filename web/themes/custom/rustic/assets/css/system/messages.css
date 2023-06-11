@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * SYSTEM: System Messages
+ *
+ * @category Stylesheet
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+
+
+.system-alert {
+  display: grid;
+  grid-template-columns: 3rem 1fr 3rem;
+  align-items: center;
+  gap: 5%;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1.5rem -1rem rgba(0, 0, 0, 0.3);
+}
+
+.system-alert + .system-alert {
+  margin-top: 0.5rem;
+}
+
+.system-alert:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.system-alert .icon--status,
+.system-alert figcaption {
+  grid-row: 1/span 2;
+}
+
+.system-alert .icon--status {
+  grid-column: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.system-alert .button--close {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  width: 1rem;
+  height: 1rem;
+  background: none;
+  fill: #000;
+}
+
+.system-alert figcaption {
+  grid-column: 2;
+  font-size: 0.9rem;
+}
+
+.system-alert figcaption h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: clamp(1rem, -1rem + 4vw, 1.5rem);
+  color: #000;
+}
+
+.system-alert figcaption p,
+.system-alert figcaption ul {
+  line-height: 1.4;
+  color: #000;
+}
+
+.system-alert figcaption ul {
+  margin: 0;
+  padding-inline-start: 1rem;
+}
+
+.system-alert figcaption a {
+  font-weight: bold;
+}
+
+.system-alert figcaption a:active,
+.system-alert figcaption a:hover,
+.system-alert figcaption a:focus {
+  text-decoration: underline double !important;
+  color: #000 !important;
+}
+
+
+/** -- Info/Status  */
+
+.system-alert.status {
+  background-color: var(--system--status-light);
+  box-shadow: inset 0 0 1rem hsl(var(--system--status-light-h), var(--system--status-light-s), calc(var(--system--status-light-l) - 5%));
+}
+
+.system-alert.status .icon--status {
+  fill: var(--system--status);
+}
+
+.system-alert.status figcaption a:link,
+.system-alert.status figcaption a:visited {
+  color: hsl(var(--system--status-h), var(--system--status-s), calc(var(--system--status-l) - 25%));
+}
+
+
+/** -- Success  */
+
+.system-alert.success {
+  background-color: var(--system--success-light);
+  box-shadow: inset 0 0 1rem hsl(var(--system--success-light-h), var(--system--success-light-s), calc(var(--system--success-light-l) - 5%));
+}
+
+.system-alert.success .icon--status {
+  fill: var(--system--success);
+}
+
+.system-alert.success figcaption a:link,
+.system-alert.success figcaption a:visited {
+  color: hsl(var(--system--success-h), var(--system--success-s), calc(var(--system--success-l) - 20%));
+}
+
+
+/** -- Warning  */
+
+
+.system-alert.warning {
+  background-color: var(--system--warning-light);
+  box-shadow: inset 0 0 1rem hsl(var(--system--warning-light-h), var(--system--warning-light-s), calc(var(--system--warning-light-l) - 5%));
+}
+
+.system-alert.warning .icon--status {
+  fill: var(--system--warning);
+}
+
+.system-alert.warning figcaption a:link,
+.system-alert.warning figcaption a:visited {
+  color: hsl(var(--system--warning-h), var(--system--warning-s), calc(var(--system--warning-l) - 40%));
+}
+
+
+/** -- Danger/Error  */
+
+.system-alert.danger,
+.system-alert.error {
+  background-color: var(--system--danger-light);
+  box-shadow: inset 0 0 1rem hsl(var(--system--danger-light-h), var(--system--danger-light-s), calc(var(--system--danger-light-l) - 5%));
+}
+
+.system-alert.danger .icon--status,
+.system-alert.error .icon--status {
+  fill: var(--system--danger);
+}
+
+.system-alert.danger figcaption a:link,
+.system-alert.danger figcaption a:visited,
+.system-alert.error figcaption a:link,
+.system-alert.error figcaption a:visited {
+  color: hsl(var(--system--danger-h), var(--system--danger-s), calc(var(--system--danger-l) - 20%));
+}
+
+
+/** -- Drupal Dump  */
+
+code, kbd, pre, samp {
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: #7a0e00;
+}
+
+pre.sf-dump,
+pre.sf-dump .sf-dump-default {
+  z-index: 2 !important;
+}

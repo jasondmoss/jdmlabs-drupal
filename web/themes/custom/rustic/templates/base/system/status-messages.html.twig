@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Template: System -- Status Messages.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% for type, messages in message_list -%}
+  {% set classes = [ 'system-alert', 'dismissible', type ] %}
+  <figure{{ attributes.addClass(classes) }} role="alert" aria-label="{{ status_headings[type] }}">
+    <button class="button--close" type="button" data-dismiss="alert" title="{{ 'Hide message'|t }}" aria-label="{{ 'Hide message'|t }}">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1.28 1.28" width="64" height="64" role="img" aria-label="Close icon">
+        <rect transform="rotate(45)" x=".15491" y="-.10717" width="1.5004" height=".21434" ry="0"/>
+        <rect transform="rotate(-45)" x="-.75018" y=".79793" width="1.5004" height=".21434" ry="0"/>
+      </svg>
+      <span class="sr-only is-focusable" aria-hidden="false">{{ 'Hide'|t }}</span>
+    </button>
+    {% if type == 'status' %}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icon--status" width="32" height="32" role="img" aria-hidden="true">
+        <path d="m.057658 15.128 2.22-6.8512c5.1115 1.8055 8.8281 3.3638 11.14 4.6831-.60979-5.8209-.93063-9.8245-.96451-12.011h6.9967c-.09964 3.1825-.46631 7.1741-1.112 11.963 3.316-1.67 7.1063-3.2144 11.387-4.6332l2.218 6.8492c-4.0852 1.3511-8.0907 2.2538-12.013 2.7022 1.9609 1.7058 4.7269 4.7448 8.302 9.117l-5.7911 4.1032c-1.8633-2.5388-4.0673-5.9963-6.6081-10.374-2.3794 4.5336-4.4718 7.9971-6.2713 10.374l-5.6914-4.1032c3.7305-4.5974 6.3989-7.6364 8.005-9.117-4.147-.8011-8.0868-1.7058-11.817-2.7022" stroke-width="1.9928"/>
+      </svg>
+    {% elseif type == 'success' %}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icon--status" width="32" height="32" role="img" aria-hidden="true">
+        <path d="m12.664 27.774c-.42116.42116-1.1137.42116-1.5349 0l-10.768-10.757c-.42116-.41899-.42116-1.1137 0-1.5349l3.0502-3.0545c.42116-.42333 1.1115-.42333 1.5349 0l6.185 6.1828c.42116.41899 1.1137.41899 1.5349 0l14.391-14.385c.42333-.42116 1.1159-.42116 1.5349 0l3.048 3.048c.41899.42116.41899 1.1137 0 1.5349z" stroke-width="2.1709"/>
+      </svg>
+    {% elseif type == 'warning' %}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icon--status" width="32" height="32" role="img" aria-hidden="true">
+        <path d="m30.724 26.012-11.755-23.512c-1.6319-3.2637-4.303-3.2637-5.9371 0l-11.757 23.512c-1.6319 3.2659.01769 5.9348 3.6662 5.9348h22.116c3.6485 0 5.298-2.6689 3.6662-5.9348zm-16.938-18.388h4.4268v11.056h-4.4268zm4.9796 19.049c0 .76065-.62135 1.382-1.382 1.382h-2.764c-.76286 0-1.3842-.62134-1.3842-1.382v-2.7397c0-.76065.62134-1.382 1.3842-1.382h2.764c.76065 0 1.382.62135 1.382 1.382z" stroke-width="2.2112"/>
+      </svg>
+    {% elseif type == 'error' %}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icon--status" width="32" height="32" role="img" aria-hidden="true">
+        <path d="m16.002.063063c-8.8063 0-15.941 7.1352-15.941 15.937 0 8.8017 7.1352 15.937 15.941 15.937 8.7995 0 15.937-7.1352 15.937-15.937 0-8.8017-7.1375-15.937-15.937-15.937zm9.1637 21.137c.14116.14343.22767.33923.22767.54413 0 .20718-.08424.40298-.22767.54641l-2.8732 2.8732c-.14571.14116-.34151.22767-.54641.22767s-.4007-.08196-.54641-.22767l-5.1977-5.1977-5.2045 5.1977c-.14571.14116-.3415.22767-.54641.22767-.2049 0-.4007-.08196-.54641-.22767l-2.8709-2.8732c-.14343-.14116-.22767-.33695-.22767-.54641 0-.20035.081962-.4007.22767-.54186l5.1977-5.2023-5.1977-5.2c-.14343-.14571-.22767-.3415-.22767-.54641 0-.2049.081962-.4007.22767-.54641l2.8732-2.8732c.14343-.14343.33923-.22767.54641-.22767.20263 0 .4007.081962.54641.22767l5.2023 5.2 5.1977-5.2c.14571-.14343.34151-.22767.54641-.22767s.4007.081962.54641.22767l2.8732 2.8732c.14116.14343.22767.33923.22767.54641 0 .20263-.08424.4007-.22767.54641l-5.1977 5.2z" stroke-width="2.2767"/>
+      </svg>
+    {% endif %}
+    <figcaption>
+      {% if status_headings[type] -%}
+        <h2>{{ status_headings[type] }}</h2>
+      {% endif -%}
+      {% if messages|length > 1 -%}
+        <ul>
+          {% for message in messages -%}
+            <li>{{ message }}</li>
+          {% endfor -%}
+        </ul>
+      {% else -%}
+        <p>{{ messages|first }}</p>
+      {% endif -%}
+    </figcaption>
+  </figure>
+{% endfor -%}

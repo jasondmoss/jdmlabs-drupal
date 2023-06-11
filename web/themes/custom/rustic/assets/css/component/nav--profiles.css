@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * COMPONENT - NAV: Profile Links
+ *
+ * @category Stylesheet
+ * @package JDMLABS
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights freely given.
+ * @link https://www.jdmlabs.com/
+ */
+
+/*.menu--profile {}*/
+
+.menu--profile .menu {
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.menu--profile .menu .menu-link {
+  min-width: 8.75rem;
+  padding: 0.2rem 1rem;
+}

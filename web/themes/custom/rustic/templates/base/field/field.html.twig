@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Template: Default Field.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set classes = [
+  'field',
+  'field--name-' ~ field_name|clean_class,
+  'field--type-' ~ field_type|clean_class,
+  'field--label-' ~ label_display,
+  label_display == 'inline' ? 'clearfix',
+] %}
+{% set title_classes = [
+  'field__label',
+  label_display == 'visually_hidden' ? 'visually-hidden',
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% if not label_hidden %}
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+  {% endif %}
+  <div class="field__items">
+    {% for item in items %}
+      <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+    {% endfor %}
+  </div>
+</div>

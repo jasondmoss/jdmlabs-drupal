@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * COMPONENT: Profile Links
+ *
+ * @category Stylesheet
+ * @package JDMLABS
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights freely given.
+ * @link https://www.jdmlabs.com/
+ */
+
+.navigation .menu {
+  display: flex;
+  list-style: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.navigation .menu,
+.navigation .menu .menu-item span {
+  width: 100%;
+}
+
+.navigation .menu .menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+.navigation .menu .menu-link .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}

@@ -1,0 +1,6 @@
+# rustic.mobile:
+#   label: Mobile Only
+#   mediaQuery: 'all and (max-width: 1024px)'
+#   weight: 0
+#   multipliers:
+#     - 1x

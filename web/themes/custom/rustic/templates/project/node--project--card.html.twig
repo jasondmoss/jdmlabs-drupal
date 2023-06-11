@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Template: Project - Card
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set classes = [ 'h-entry', 'h-as-article', 'card', 'project' ] %}
+{% set permalink = url('entity.node.canonical', { 'node': node.nid.value }) %}
+<article itemid="{{ permalink }}" itemscope itemtype="https://schema.org/WebSite"{{ attributes.addClass(classes) }}>
+  <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject" role="group" class="project-signature-image">
+    <div class="media-object">
+      {{ drupal_image(node.field_image.0.entity.field_media_image.entity.uri.value, '', responsive=true) }}
+    </div>
+  </figure>
+  <header class="project-header">
+    <h3 class="project-title"><a itemprop="url" rel="bookmark" href="{{ permalink }}" title="{{ ''|t }}">
+        <span itemprop="name">{{ node.title.value }}</span>
+      </a></h3>
+    {{ title_suffix }}
+  </header>
+  <div class="project-summary">
+    <p>{{ node.body.0.summary }}</p>
+    <footer class="project-footer">
+      <meta itemprop="name" content="{{ node.title.value }}" class="p-name">
+      <meta itemprop="identifier" content="{{ node.uuid.value }}" class="u-uid">
+      <meta itemprop="author" content="{{ node.getOwner().getDisplayName() }}" class="p-author">
+      <meta itemprop="publisher" content="{{ publisher }}" class="p-publisher">
+      <time itemprop="datePublished" content="{{ node.created.value|date('c') }}" datetime="{{ node.created.value|date('c') }}" class="dt-published sr-only">{{ node.created.value|date('l, F j, Y - H:i') }}</time>
+      <time itemprop="dateModified" content="{{ card.created.value|date('c') }}" datetime="{{ card.created.value|date('c') }}" class="dt-updated sr-only">{{ node.changed.value|date('l, F j, Y - H:i') }}</time>
+    </footer>
+  </div>
+</article>

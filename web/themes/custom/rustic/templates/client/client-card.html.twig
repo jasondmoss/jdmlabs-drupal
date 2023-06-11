@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Template Part: Client.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+<aside itemprop="{{ client.schema.name }}" itemscope itemtype="{{ client.schema.endpoint }}" itemid="{{ url('entity.taxonomy_term.canonical', { 'taxonomy_term': client.tid.value }) }}" class="project-client">
+  <figure itemprop="logo" itemscope itemtype="https://schema.org/ImageObject" role="group" class="project-client--logo">
+    {{ drupal_image(client.field_logo.entity.field_media_image.0.entity.uri.value, '', {
+      loading: 'lazy',
+      decoding: 'async',
+      class: 'logo',
+      width: client.field_logo.entity.field_media_image.0.width,
+      height: client.field_logo.entity.field_media_image.0.height,
+      alt: client.field_logo.entity.field_media_image.0.alt
+    }) }}
+  </figure>
+  <h2 class="project-client--name">
+    <a itemprop="url" rel="external" href="{{ client.field_website.0.uri }}" title="Visit Spectacular Northwest Territories">
+      <span itemprop="name">{{ client.name.value }}</span></a>
+  </h2>
+  <div itemprop="description" class="project-client--summary">
+    {{ client.description.value }}
+  </div>
+  <time itemprop="dateModified" content="{{ client.changed.value|date('c') }}" datetime="{{ client.changed.value|date('c') }}" class="dt-updated sr-only">{{ client.changed.value|date('l, F j, Y - H:i') }}</time>
+</aside>

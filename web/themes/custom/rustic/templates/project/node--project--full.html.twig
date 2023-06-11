@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * Template: Node.
+ * Theme implementation to display a node.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set permalink = url('entity.node.canonical', { 'node': node.nid.value }) %}
+<div itemscope itemtype="https://schema.org/WebSite" itemid="{{ permalink }}" class="project">
+  <meta itemprop="abstract" content="{{ node.body.0.summary }}">
+  {% if node.field_client|length > 0 %}
+    {% set client = node.field_client.0.entity %}
+    {% include '@rustic/client/client-card.html.twig' %}
+  {% endif %}
+  <header>
+    <h1>{{ node.title.0.value }}</h1>
+  </header>
+  {% if node.field_image|length > 0 -%}
+    <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject" role="group" class="project--signature-image">
+      {{ drupal_image(node.field_image.0.entity.field_media_image.entity.fileuri, '', {
+        itemprop: 'thumbnailUrl',
+        loading: 'lazy',
+        decoding: 'async',
+        class: 'image',
+        width: node.field_image.0.entity.field_media_image.0.width,
+        height: node.field_image.0.entity.field_media_image.0.height,
+        alt: node.field_image.0.entity.field_media_image.0.alt
+      }) }}
+    </figure>
+  {% endif -%}
+  <p><a itemprop="url" rel="external" class="button" href="{{ node.field_link.0.uri }}">{{ 'Visit Website'|t }}</a></p>
+  <div class="project--description">
+    {{ node.body.0.value|raw }}
+  </div>
+  {{ drupal_field('field_showcase', 'node', node.id) }}
+  <footer class="project--footer">
+    <meta itemprop="name" content="{{ node.title.0.value }}" class="p-name">
+    <meta itemprop="identifier" content="{{ node.uuid.value }}" class="u-uid">
+    <meta itemprop="author" content="{{ node.getOwner().getDisplayName() }}" class="p-author">
+    <meta itemprop="publisher" content="{{ publisher }}" class="p-publisher">
+    <time itemprop="datePublished" content="{{ node.created.value|date('c') }}" datetime="{{ node.created.value|date('c') }}" class="dt-published sr-only">{{ node.created.value|date('l, F j, Y - H:i') }}</time>
+    <time itemprop="dateModified" content="{{ card.created.value|date('c') }}" datetime="{{ card.created.value|date('c') }}" class="dt-updated sr-only">{{ node.changed.value|date('l, F j, Y - H:i') }}</time>
+  </footer>
+</div>

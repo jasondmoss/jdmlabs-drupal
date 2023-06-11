@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * COMPONENT - NAV: Site Branding
+ *
+ * @category Stylesheet
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+
+
+.site--branding a {
+  display: grid;
+  grid-template-columns: 47.5% 47.5%;
+  gap: 1rem 5%;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  transition: margin 0.3s ease-in-out;
+}
+
+.site--branding a .site-logo,
+.site--branding .site-name {
+  grid-row: 1/span 2;
+}
+
+.site--branding a .site-logo {
+  grid-column: 2;
+}
+
+.site--branding a .site-logo,
+.site--branding a:link .site-logo,
+.site--branding a:visited .site-logo {
+  fill: var(--primary);
+}
+
+.site--branding a:active .site-logo,
+.site--branding a:focus .site-logo,
+.site--branding a:hover .site-logo {
+  animation-name: grow, spin;
+  animation-delay: 0s, 150ms;
+  animation-duration: 500ms, 1500ms;
+  animation-fill-mode: forwards, backwards;
+  animation-iteration-count: infinite, infinite;
+  animation-timing-function: linear, linear;
+}
+
+.site--branding .site-name {
+  grid-column: 1;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.site--branding .site-name > span {
+  display: none;
+}
+
+.site--branding .site-slogan {
+  grid-column: 1/span 2;
+  grid-row: 3;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+
+@media screen {
+  @media (min-width: 25rem) {
+    .site--branding a {
+      grid-template-columns: 4rem 1fr;
+      justify-items: start;
+      gap: 0.5rem 10%;
+    }
+
+    .site--branding a .site-logo {
+      grid-column: 1;
+      grid-row: 1/span 3;
+      justify-self: center;
+    }
+
+    .site--branding .site-name {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .site--branding .site-slogan {
+      grid-column: 2;
+      grid-row: 2/span 2;
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 36.25rem) {
+    .site--branding .site-name {
+      font-size: 2.5rem;
+    }
+
+    .site--branding .site-name span {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * COMPONENT - NAV: User account Links
+ *
+ * @category Stylesheet
+ * @package JDMLABS
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights freely given.
+ * @link https://www.jdmlabs.com/
+ */
+
+/*.menu--profile {}*/
+
+.menu--account .menu {
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.menu--account .menu .menu-item {
+  width: fit-content;
+}
+
+.menu--account .menu .menu-link {
+  padding: 0.25rem;
+  text-transform: lowercase;
+  text-underline-offset: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.menu--account .menu .menu-link,
+.menu--account .menu .menu-link:link,
+.menu--account .menu .menu-link:visited {
+  color: #fff;
+}
+
+.menu--account .menu .menu-link:active,
+.menu--account .menu .menu-link:hover,
+.menu--account .menu .menu-link:focus {
+  text-decoration: underline double;
+  color: #fff;
+}

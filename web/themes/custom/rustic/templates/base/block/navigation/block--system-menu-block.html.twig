@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Template: Block -- Menu.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% set classes = [
+  'block',
+  'navigation',
+  'menu--' ~ derivative_plugin_id|clean_class
+] %}
+<nav itemscope itemtype="https://schema.org/SiteNavigationElement"{{ attributes.addClass(classes) }} aria-label="{{ configuration.label }}">
+  {{ title_suffix }}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</nav>

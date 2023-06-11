@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * Template: Menu -- Local Task.
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% if link['#url'].routeName == 'entity.node.canonical' -%}
+  {% set attributes = attributes
+    .setAttribute('aria-selected', 'true')
+    .setAttribute('aria-setsize', '6')
+    .setAttribute('aria-posinset', '1')
+    .setAttribute('tabindex', '0') %}
+{% elseif link['#url'].routeName == 'entity.node.edit_form' -%}
+  {% set attributes = attributes
+    .setAttribute('aria-selected', 'false')
+    .setAttribute('aria-setsize', '6')
+    .setAttribute('aria-posinset', '2')
+    .setAttribute('tabindex', '0') %}
+{% elseif link['#url'].routeName == 'entity.node.delete_form' -%}
+  {% set attributes = attributes
+    .setAttribute('aria-selected', 'false')
+    .setAttribute('aria-setsize', '6')
+    .setAttribute('aria-posinset', '3')
+    .setAttribute('tabindex', '0') %}
+{% elseif link['#url'].routeName == 'entity.node.display' -%}
+  {% set attributes = attributes
+    .setAttribute('aria-selected', 'false')
+    .setAttribute('aria-setsize', '6')
+    .setAttribute('aria-posinset', '4')
+    .setAttribute('tabindex', '0') %}
+{% elseif link['#url'].routeName == 'entity.node.version_history' -%}
+  {% set attributes = attributes
+    .setAttribute('aria-selected', 'false')
+    .setAttribute('aria-setsize', '6')
+    .setAttribute('aria-posinset', '5')
+    .setAttribute('tabindex', '0') %}
+{% elseif link['#url'].routeName == 'entity.node.devel_load' -%}
+  {% set attributes = attributes
+    .setAttribute('aria-selected', 'false')
+    .setAttribute('aria-setsize', '6')
+    .setAttribute('aria-posinset', '6')
+    .setAttribute('tabindex', '0') %}
+{% endif -%}
+<li role="tab"{{ attributes.addClass('nav-item') }}>{{ link }}</li>

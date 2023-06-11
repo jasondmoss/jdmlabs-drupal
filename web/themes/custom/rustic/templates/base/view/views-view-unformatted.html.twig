@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Template: View -- Unformatted
+ *
+ * @category TwigTemplate
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+#}
+{% if title -%}
+  <h3>{{ title }}</h3>
+{% endif -%}
+{% if rows is not empty -%}
+  {% for row in rows -%}
+    {{ row.content }}
+  {% endfor -%}
+{% elseif empty -%}
+  {{ empty }}
+{% endif -%}

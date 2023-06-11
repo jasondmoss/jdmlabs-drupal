@@ -1,0 +1,40 @@
+rustic-assets:
+  version: 1.0.0
+  css:
+    base:
+      assets/css/variables.css: {}
+      assets/css/base.css: {}
+
+      assets/css/layout/site.css: {}
+      assets/css/layout/site--topbar.css: {}
+      assets/css/layout/site--header.css: {}
+      assets/css/layout/site--footer.css: {}
+
+      assets/css/layout/page.css: {}
+      assets/css/layout/page--content.css: {}
+      assets/css/layout/page--listings.css: {}
+
+      assets/css/component/element--button.css: {}
+      assets/css/component/element--media.css: {}
+
+      assets/css/component/navigation.css: {}
+      assets/css/component/nav--branding.css: {}
+      assets/css/component/nav--main.css: {}
+      assets/css/component/nav--profiles.css: {}
+      assets/css/component/nav--account.css: {}
+
+      assets/css/content/base.css: {}
+
+      assets/css/system/toolbar.css: {}
+      assets/css/system/tasks.css: {}
+      assets/css/system/messages.css: {}
+      #assets/css/system/preview.css: {}
+      assets/css/system/user.css: {}
+
+      assets/css/accessibility.css: {}
+
+  js:
+    assets/js/rustic.js: { type: file, minified: false }
+  dependencies:
+      - core/drupal
+      - core/once

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+/**
+ * @file
+ * SYSTEM: User Login|Forgot Password
+ *
+ * @category Stylesheet
+ * @package DRUPAL10
+ * @subpackage rustic
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights reserved.
+ * @link https://www.jdmlabs.com/
+ */
+
+
+.page-user--login .user-login-form,
+.page-user--password .user-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem 0;
+  width: 100%;
+  max-width: 28em;
+}
+
+.page-user--login .user-login-form .form-actions,
+.page-user--password .user-login-form .form-actions {
+  clear: both;
+  margin-top: 1rem;
+}
