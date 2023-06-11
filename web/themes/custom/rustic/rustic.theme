@@ -4,12 +4,11 @@
  * @file
  * Theme Functions.
  *
- * @link       https://www.jdmlabs.com/
- * @package    DRUPAL10
- * @subpackage rustic
- * @author     Jason D. Moss <jason@jdmlabs.com>
- * @copyright  2005-2023 Jason D. Moss. All rights reserved.
- * @category   ThemeFunctions
+ * @package JDMLABS
+ * @subpackage RUSTIC
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights freely given (GPL2).
+ * @link https://www.jdmlabs.com/
  */
 
 use Drupal\Component\Utility\Html;
@@ -165,14 +164,6 @@ function rustic_preprocess_node(array &$variables): void
         return;
     }
 
-    /** -- Client data */
-
-//    if ('project' == $entity->bundle()
-//        && ! empty($term = $entity->get('field_client')->referencedEntities())
-//    ) {
-//        $variables['client'] = get_client_data($term);
-//    }
-
     $wc = 0;
     if (isset($entity->body) && ! $entity->get('body')->isEmpty()) {
         $wc = get_word_count($entity->body->getString());
@@ -240,9 +231,6 @@ function rustic_preprocess_taxonomy_term(&$variables): void
     $variables['client'] = isset($variables['term']->vid->target_id)
         ? pull_client_data($variables['term'])
         : [];
-//    $variables['client'] = ('client' == $variables['term']->vid->target_id)
-//        ? pull_client_data($variables['term'])
-//        : [];
 }
 
 

@@ -1,12 +1,11 @@
 /**
  * @file
- * Scripts
+ * Theme Scripts
  *
- * @category   JavaScript
- * @package    JDMLABS
- * @author     Jason D. Moss <jason@jdmlabs.com>
- * @copyright  2005-2023 Jason D. Moss. All rights freely given.
- * @link       https://www.jdmlabs.com/
+ * @package JDMLABS
+ * @author Jason D. Moss <jason@jdmlabs.com>
+ * @copyright 2005-2023 Jason D. Moss. All rights freely given (GPL2).
+ * @link https://www.jdmlabs.com/
  *
  * jshint esversion: 11
  */
@@ -54,7 +53,10 @@ function newWindowAnchor (anchor)
 }
 
 (function () {
+    "use strict";
+
     window.addEventListener("load", () => {
+
         // Open external links in new tab/window.
         document.querySelectorAll("a").forEach((link) => {
             const href = link.getAttribute("href");
@@ -129,8 +131,6 @@ function newWindowAnchor (anchor)
      */
     Drupal.behaviors.Global = {
         attach: (context) => {
-            "use strict";
-
             document.querySelectorAll(".system-alert").forEach((message) => {
                 message.querySelector(".button--close").addEventListener(
                     "click",

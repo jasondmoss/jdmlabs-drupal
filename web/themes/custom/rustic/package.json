@@ -1,12 +1,12 @@
 {
     "name": "jdmlabs-2023-d9",
-    "package": "DRUPAL10",
+    "package": "JDMLABS",
     "subPackage": "RUSTIC",
     "version": "1.0.0",
-    "copyright": "2005-2023 Jason D Moss. All rights reserved.",
+    "copyright": "2005-2023 Jason D. Moss. All rights freely given (GPL2).",
     "description": "JdmLabs: The Online Laboratory and personal website of Jason D. Moss.",
     "homepage": "https://www.jdmlabs.com/",
-    "license": "SEE LICENSE IN <LICENSE>",
+    "license": "SEE LICENSE IN <LICENSE.txt>",
     "author": {
         "name": "Jason Moss",
         "email": "work@jdmlabs.com"

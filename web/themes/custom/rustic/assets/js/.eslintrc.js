@@ -1,13 +1,13 @@
 module.exports = {
     "parserOptions": {
-        "ecmaVersion": 2018
+        "ecmaVersion": 2022
     },
     "env": {
         "amd": true,
         "browser": true,
         "node": true,
         "shared-node-browser": true,
-        "es6": true
+        "es2022": true
     },
     "globals": {
         "Atomics": "readonly",
