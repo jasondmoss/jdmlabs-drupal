@@ -22,6 +22,7 @@
         "drupal/core-composer-scaffold": "^10.0",
         "drupal/core-project-message": "^10.0",
         "drupal/core-recommended": "^10.0",
+        "drupal/core-vendor-hardening": "^10.0",
         "drupal/devel": "^5.1",
         "drupal/entity": "^1.4",
         "drupal/entity_reference_revisions": "^1.10",
@@ -53,7 +54,8 @@
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupal/core-vendor-hardening": true
         },
         "sort-packages": true
     },
