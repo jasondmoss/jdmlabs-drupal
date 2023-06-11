@@ -3,7 +3,6 @@
 .ht.router.php
 .htaccess
 INSTALL.txt
-README.md
 autoload.php
 example.gitignore
 index.php
