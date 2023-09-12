@@ -15,27 +15,24 @@
   is_front ? 'front' : 'not-front'
 ] %}
 {% set hasTopbar = page.topbar|render|striptags('<drupal-render-placeholder>')|trim is not empty %}
-<!DOCTYPE html>
-<html{{ html_attributes }}>
-<head>
-  <head-placeholder token="{{ placeholder_token }}">
-    <title>{{ head_title|safe_join(' &#47; ') }}</title>
-    <style>@font-face {
-        font-family: "Berkeley Mono";
-        font-style: normal;
-        font-weight: normal;
-        font-display: swap;
-        src: url("{{ host }}/themes/custom/rustic/assets/fonts/berkeley-mono/berkeley-mono--regular.woff2") format("woff2");
-      }</style>
-    <css-placeholder token="{{ placeholder_token }}">
-      <js-placeholder token="{{ placeholder_token }}">
-</head>
-<body itemscope{{ attributes.addClass(body_classes) }}>
+<!DOCTYPE html><html{{ html_attributes }}><head>
+<head-placeholder token="{{ placeholder_token }}">
+<title>{{ head_title|safe_join(' &#47; ') }}</title>
+<style>@font-face{font-family:"Berkeley Mono";font-style:normal;font-weight:normal;font-display:swap;src:url("{{ host }}/themes/custom/rustic/assets/fonts/berkeley-mono/berkeley-mono--regular.woff2") format("woff2");}</style>
+<css-placeholder token="{{ placeholder_token }}">
+<js-placeholder token="{{ placeholder_token }}">
+</head><body itemscope itemtype="https://schema.org/"{{ attributes.addClass(body_classes) }}>
 <meta itemprop="email" content="work@jdmlabs.com">
 <meta itemprop="worksFor" content="JdmLabs">
 <meta itemprop="worksFor" content="Outcrop Communications">
-<a href="#contentMain" class="visually-hidden focusable">{{ 'Skip to main content'|t }}</a>
+
+<ul class="a11y-nav">
+  <li><a class="" href="#">Skip to main content</a></li>
+  <li><a class="" href="#">Skip to navigation</a></li>
+</ul>
+
 {{ page_top }}
+
 {% if logged_in or hasTopbar -%}
   <div id="toolbar-site" class="site--topbar" role="banner">
     {% if hasTopbar -%}
@@ -55,8 +52,10 @@
     {% endif -%}#}
   </div>
 {% endif -%}
+
 {{ page }}
+
 {{ page_bottom }}
+
 <js-bottom-placeholder token="{{ placeholder_token }}">
-</body>
-</html>
+</body></html>

@@ -41,7 +41,13 @@
         "drupal/tinypng": "1.x-dev@dev",
         "drupal/twig_tweak": "^3.2",
         "drupal/webform": "^6.2@beta",
-        "drush/drush": "^11.5"
+        "drush/drush": "^11.5",
+        "free2one/php-accessor": "~0.4",
+        "oomphinc/composer-installers-extender": "^2.0"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -55,7 +61,8 @@
             "drupal/core-project-message": true,
             "phpstan/extension-installer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "drupal/core-vendor-hardening": true
+            "drupal/core-vendor-hardening": true,
+            "oomphinc/composer-installers-extender": true
         },
         "sort-packages": true
     },
@@ -65,12 +72,18 @@
                 "web-root": "web/"
             }
         },
+        "installer-tyes": [
+            "npm-asset",
+            "bower-asset"
+        ],
         "installer-paths": {
             "web/core": [
                 "type:drupal-core"
             ],
             "web/libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
             ],
             "web/modules/contrib/{$name}": [
                 "type:drupal-module"

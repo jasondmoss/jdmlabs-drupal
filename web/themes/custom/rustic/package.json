@@ -13,13 +13,16 @@
     },
     "devDependencies": {
         "grunt": "latest",
-        "stylelint": "latest",
-        "grunt-stylelint": "latest",
         "grunt-contrib-jshint": "latest",
         "grunt-contrib-watch": "latest",
-        "grunt-notify": "latest"
+        "grunt-notify": "latest",
+        "grunt-stylelint": "latest",
+        "stylelint": "latest"
     },
     "scripts": {
         "watch": "grunt watch"
+    },
+    "dependencies": {
+        "@q42/floating-focus-a11y": "^1.3.3"
     }
 }

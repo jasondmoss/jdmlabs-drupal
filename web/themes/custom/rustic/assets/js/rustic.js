@@ -1,14 +1,5 @@
-/**
- * @file
- * Theme Scripts
- *
- * @package JDMLABS
- * @author Jason D. Moss <jason@jdmlabs.com>
- * @copyright 2005-2023 Jason D. Moss. All rights freely given (GPL2).
- * @link https://www.jdmlabs.com/
- *
- * jshint esversion: 11
- */
+// import FloatingFocus from "@q42/floating-focus-a11y";
+// new FloatingFocus();
 
 /**
  * Has (Object|Node) been defined? Does (Object|Node) exist?

@@ -47,12 +47,12 @@ function pull_client_data(Term $term): array
 
     $media = $term->referencedEntities()[1]->get('field_media_image')->first();
 
-    $logo = File::load($media->getValue()['target_id']);
-
-    $data['logo']['uri'] = $logo->getFileUri();
-    $data['logo']['width'] = $media->get('width')->getValue();
-    $data['logo']['height'] = $media->get('height')->getValue();
-    $data['logo']['alt'] = $media->get('alt')->getValue();
+    if ($logo = File::load($media->getValue()['target_id'])) {
+        $data['logo']['uri'] = $logo->getFileUri();
+        $data['logo']['width'] = $media->get('width')->getValue();
+        $data['logo']['height'] = $media->get('height')->getValue();
+        $data['logo']['alt'] = $media->get('alt')->getValue();
+    }
 
     $data['schema']['type'] = $term->referencedEntities()[2]->get('name')->first()->value;
     $data['schema']['url'] = $term->referencedEntities()[2]->field_schema_url->uri;
@@ -76,15 +76,16 @@ function rustic_preprocess_html(array &$variables): void
 
     /** -- Error Pages. */
 
-    if (! is_null(
-        Drupal::requestStack()->getCurrentRequest()->attributes->get('exception')
-    )) {
+    if (Drupal::requestStack()
+        ->getCurrentRequest()
+        ->attributes->get('exception') !== null
+    ) {
         $statusCode = Drupal::requestStack()
             ->getCurrentRequest()
             ->attributes->get('exception')
             ->getStatusCode();
 
-        if (in_array($statusCode, [401, 403, 404])) {
+        if (in_array($statusCode, [ 401, 403, 404 ], true)) {
             $classes[] = 'page--error';
         }
     }
@@ -96,16 +97,16 @@ function rustic_preprocess_html(array &$variables): void
     $pathArgs = explode('/', ltrim($pathCurrent, '/'));
 
     if (isset($pathArgs[0])) {
-        if ('search' == $pathArgs[0]) {
+        if ($pathArgs[0] === 'search') {
             $classes[] = 'page--search-results';
-        } elseif ('user' == $pathArgs[0]) {
+        } elseif ($pathArgs[0] === 'user') {
             $classes[] = 'page-user--' . $pathArgs[1];
         }
     }
 
     /** -- By taxonomy term. */
 
-    if ('entity.taxonomy_term.canonical' == Drupal::routeMatch()->getRouteName()) {
+    if (Drupal::routeMatch()->getRouteName() === 'entity.taxonomy_term.canonical') {
         $term = Drupal::routeMatch()->getParameter('taxonomy_term');
 
         $variables['term_id'] = $term->id();
@@ -126,22 +127,22 @@ function rustic_preprocess_html(array &$variables): void
         $classes[] = 'node-' . $node->id();
         $classes[] = 'type-' . $node->getType();
 
-        if ('page' == $node->bundle()) {
+        if ($node->bundle() === 'page') {
             $pathCurrentAlias = Drupal::service('path_alias.manager')
                 ->getAliasByPath($pathCurrent);
 
             $classes[] = 'page--' . basename($pathCurrentAlias);
         }
 
-        if (5 == $node->id()) {
+        if ($node->id() === 5) {
             $itemtype = 'https://schema.org/CollectionPage';
         }
 
-        if (6 == $node->id()) {
+        if ($node->id() === 6) {
             $itemtype = 'https://schema.org/ContactPage';
         }
 
-        if ('project' == $node->bundle()) {
+        if ($node->bundle() === 'project') {
             $itemtype = 'https://schema.org/ItemPage';
         }
     }
@@ -206,7 +207,7 @@ function rustic_preprocess_page(array &$variables): void
 
     /** -- Taxonomy term. */
 
-    if (Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical') {
+    if (Drupal::routeMatch()->getRouteName() === 'entity.taxonomy_term.canonical') {
         $term = Drupal::routeMatch()->getParameter('taxonomy_term');
 
         // Make sure Twig has full term data.
@@ -271,11 +272,11 @@ function rustic_theme_suggestions_page_alter(array &$suggestions): void
         $suggestions[] = 'page__' . $node->bundle();
     }
 
-    if (Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical'
-        && $tid = Drupal::routeMatch()->getRawParameter('taxonomy_term')
-    ) {
-        $term = Term::load($tid);
+    if (Drupal::routeMatch()->getRouteName() === 'entity.taxonomy_term.canonical') {
+        $tid = (Drupal::routeMatch()->getRawParameter('taxonomy_term'));
 
-        $suggestions[] = 'page__taxonomy__' . $term->bundle();
+        if ($term = Term::load($tid)) {
+            $suggestions[] = 'page__taxonomy__' . $term->bundle();
+        }
     }
 }

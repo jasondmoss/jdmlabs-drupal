@@ -15,7 +15,7 @@
 {% set hasContentSub = page.subcontent|render|striptags('<drupal-render-placeholder>')|trim is not empty %}
 {% set hasSidebar = page.sidebar|render|striptags('<drupal-render-placeholder>')|trim is not empty %}
 {% include '@rustic/_partial/site--header.html.twig' %}
-<main id="siteContent" class="site--content" data-quickedit-entity-id="{{ nodeedit }}" aria-label="{{ 'Main Content'|t }}">
+<main class="site--content" data-quickedit-entity-id="{{ nodeedit }}" aria-label="{{ 'Main Content'|t }}">
   <a id="contentMain" tabindex="-1"></a>
   {% if hasSidebar -%}
     <header id="siteHeader" class="site--header" role="banner">
