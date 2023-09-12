@@ -1,7 +1,8 @@
 README.txt
 development.services.yml
-development.settings.yml
 example.settings.local.php
 example.sites.php
+default/default.services.yml
+default/default.settings.php
 local/services.yml
-local.settings.yml
+local/settings.php
