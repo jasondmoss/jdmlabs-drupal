@@ -89,7 +89,7 @@
  * ];
  * @endcode
  */
-$databases = [];
+// $databases = [];
 
 /**
  * Customizing database settings.
@@ -237,7 +237,7 @@ $databases = [];
  * directory in the public files path. The setting below allows you to set
  * its location.
  */
-# $settings['config_sync_directory'] = '/directory/outside/webroot';
+// $settings['config_sync_directory'] = '/directory/outside/webroot';
 
 /**
  * Settings:
@@ -268,7 +268,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'gaxwWLBe&NxKRy$xyvt@!53cstt23P&7aGg4Ch4854w$%U3b3BL%b*avQMMoPyf6KXjhcU3vB&*';
+// $settings['hash_salt'] = '';
 
 /**
  * Deployment identifier.
@@ -278,7 +278,7 @@ $settings['hash_salt'] = 'gaxwWLBe&NxKRy$xyvt@!53cstt23P&7aGg4Ch4854w$%U3b3BL%b*
  * custom code that changes the container, changing this identifier will also
  * allow the container to be invalidated as soon as code is deployed.
  */
-# $settings['deployment_identifier'] = \Drupal::VERSION;
+// $settings['deployment_identifier'] = \Drupal::VERSION;
 
 /**
  * Access control for update.php script.
@@ -291,7 +291,7 @@ $settings['hash_salt'] = 'gaxwWLBe&NxKRy$xyvt@!53cstt23P&7aGg4Ch4854w$%U3b3BL%b*
  * After finishing the upgrade, be sure to open this file again and change the
  * TRUE back to a FALSE!
  */
-$settings['update_free_access'] = false;
+// $settings['update_free_access'] = false;
 
 /**
  * Fallback to HTTP for Update Manager and for fetching security advisories.
@@ -308,7 +308,7 @@ $settings['update_free_access'] = false;
  * @see \Drupal\update\UpdateFetcher
  * @see \Drupal\system\SecurityAdvisories\SecurityAdvisoriesFetcher
  */
-# $settings['update_fetch_with_http_fallback'] = TRUE;
+// $settings['update_fetch_with_http_fallback'] = TRUE;
 
 /**
  * External access proxy settings:
@@ -326,9 +326,9 @@ $settings['update_free_access'] = false;
  * You can also define an array of host names that can be accessed directly,
  * bypassing the proxy, in $settings['http_client_config']['proxy']['no'].
  */
-# $settings['http_client_config']['proxy']['http'] = 'http://proxy_user:proxy_pass@example.com:8080';
-# $settings['http_client_config']['proxy']['https'] = 'http://proxy_user:proxy_pass@example.com:8080';
-# $settings['http_client_config']['proxy']['no'] = ['127.0.0.1', 'localhost'];
+// $settings['http_client_config']['proxy']['http'] = 'http://proxy_user:proxy_pass@example.com:8080';
+// $settings['http_client_config']['proxy']['https'] = 'http://proxy_user:proxy_pass@example.com:8080';
+// $settings['http_client_config']['proxy']['no'] = ['127.0.0.1', 'localhost'];
 
 /**
  * Reverse Proxy Configuration:
@@ -360,7 +360,7 @@ $settings['update_free_access'] = false;
  * Be aware, however, that it is likely that this would allow IP
  * address spoofing unless more advanced precautions are taken.
  */
-# $settings['reverse_proxy'] = TRUE;
+// $settings['reverse_proxy'] = TRUE;
 
 /**
  * Reverse proxy addresses.
@@ -369,7 +369,7 @@ $settings['update_free_access'] = false;
  * IPv4/IPv6 addresses or subnets in CIDR notation. This setting is required if
  * $settings['reverse_proxy'] is TRUE.
  */
-# $settings['reverse_proxy_addresses'] = ['a.b.c.d', 'e.f.g.h/24', ...];
+// $settings['reverse_proxy_addresses'] = ['a.b.c.d', 'e.f.g.h/24', ...];
 
 /**
  * Reverse proxy trusted headers.
@@ -413,7 +413,7 @@ $settings['update_free_access'] = false;
  * @see \Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED
  * @see \Symfony\Component\HttpFoundation\Request::setTrustedProxies
  */
-# $settings['reverse_proxy_trusted_headers'] = \Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR | \Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_HOST | \Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PORT | \Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PROTO | \Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED;
+// $settings['reverse_proxy_trusted_headers'] = \Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_FOR | \Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_HOST | \Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PORT | \Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_PROTO | \Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED;
 
 
 /**
@@ -432,7 +432,7 @@ $settings['update_free_access'] = false;
  * HTTP proxy, and bypass the reverse proxy if one is used) in order to avoid
  * getting cached pages from the proxy.
  */
-# $settings['omit_vary_cookie'] = TRUE;
+// $settings['omit_vary_cookie'] = TRUE;
 
 
 /**
@@ -445,7 +445,7 @@ $settings['update_free_access'] = false;
  * of client error responses set the value to 0. Currently applies only to
  * page_cache module.
  */
-# $settings['cache_ttl_4xx'] = 3600;
+// $settings['cache_ttl_4xx'] = 3600;
 
 /**
  * Expiration of cached forms.
@@ -455,7 +455,7 @@ $settings['update_free_access'] = false;
  *
  * @see \Drupal\Core\Form\FormCache::setCache()
  */
-# $settings['form_cache_expiration'] = 21600;
+// $settings['form_cache_expiration'] = 21600;
 
 /**
  * Class Loader.
@@ -465,7 +465,7 @@ $settings['update_free_access'] = false;
  *
  * @see https://getcomposer.org/doc/articles/autoloader-optimization.md
  */
-# $settings['class_loader_auto_detect'] = FALSE;
+// $settings['class_loader_auto_detect'] = FALSE;
 
 /**
  * Authorized file system operations:
@@ -489,15 +489,15 @@ $settings['update_free_access'] = false;
  *
  * Remove the leading hash signs to disable.
  */
-# $settings['allow_authorize_operations'] = FALSE;
+// $settings['allow_authorize_operations'] = FALSE;
 
 /**
  * Default mode for directories and files written by Drupal.
  *
  * Value should be in PHP Octal Notation, with leading zero.
  */
-# $settings['file_chmod_directory'] = 0775;
-# $settings['file_chmod_file'] = 0664;
+// $settings['file_chmod_directory'] = 0775;
+// $settings['file_chmod_file'] = 0664;
 
 /**
  * Optimized assets path:
@@ -506,7 +506,7 @@ $settings['update_free_access'] = false;
  * must exist and be writable by Drupal. This directory must be relative to
  * the Drupal installation directory and be accessible over the web.
  */
-# $settings['file_assets_path'] = 'sites/default/files';
+// $settings['file_assets_path'] = 'sites/default/files';
 
 /**
  * Public file base URL:
@@ -519,7 +519,7 @@ $settings['update_free_access'] = false;
  * security by serving user-uploaded files from a different domain or subdomain
  * pointing to the same server. Do not include a trailing slash.
  */
-# $settings['file_public_base_url'] = 'http://downloads.example.com/files';
+// $settings['file_public_base_url'] = 'http://downloads.example.com/files';
 
 /**
  * Public file path:
@@ -528,7 +528,7 @@ $settings['update_free_access'] = false;
  * must exist and be writable by Drupal. This directory must be relative to
  * the Drupal installation directory and be accessible over the web.
  */
-# $settings['file_public_path'] = 'sites/default/files';
+// $settings['file_public_path'] = 'sites/default/files';
 
 /**
  * Additional public file schemes:
@@ -551,7 +551,7 @@ $settings['update_free_access'] = false;
  * variable, the result of which is that system_file_download() grants public
  * access to all files within that scheme.
  */
-# $settings['file_additional_public_schemes'] = ['example'];
+// $settings['file_additional_public_schemes'] = ['example'];
 
 /**
  * File schemes whose paths should not be normalized:
@@ -570,7 +570,7 @@ $settings['update_free_access'] = false;
  * scheme does not allow unintended file access when using '/../' to move up the
  * directory tree.
  */
-# $settings['file_sa_core_2023_005_schemes'] = ['porcelain'];
+// $settings['file_sa_core_2023_005_schemes'] = ['porcelain'];
 
 /**
  * Configuration for phpinfo() admin status report.
@@ -587,7 +587,7 @@ $settings['update_free_access'] = false;
  *
  * @see https://www.php.net/manual/function.phpinfo.php
  */
-# $settings['sa_core_2023_004_phpinfo_flags'] = ~ (INFO_VARIABLES | INFO_ENVIRONMENT);
+// $settings['sa_core_2023_004_phpinfo_flags'] = ~ (INFO_VARIABLES | INFO_ENVIRONMENT);
 
 /**
  * Private file path:
@@ -602,7 +602,7 @@ $settings['update_free_access'] = false;
  * See https://www.drupal.org/documentation/modules/file for more information
  * about securing private files.
  */
-# $settings['file_private_path'] = '';
+// $settings['file_private_path'] = '';
 
 /**
  * Temporary file path:
@@ -615,7 +615,7 @@ $settings['update_free_access'] = false;
  *
  * @see \Drupal\Component\FileSystem\FileSystem::getOsTemporaryDirectory()
  */
-# $settings['file_temp_path'] = '/tmp';
+// $settings['file_temp_path'] = '/tmp';
 
 /**
  * Session write interval:
@@ -623,7 +623,7 @@ $settings['update_free_access'] = false;
  * Set the minimum interval between each session write to database.
  * For performance reasons it defaults to 180.
  */
-# $settings['session_write_interval'] = 180;
+// $settings['session_write_interval'] = 180;
 
 /**
  * String overrides:
@@ -637,10 +637,10 @@ $settings['update_free_access'] = false;
  * The "en" part of the variable name, is dynamic and can be any langcode of
  * any added language. (eg locale_custom_strings_de for german).
  */
-# $settings['locale_custom_strings_en'][''] = [
-#   'Home' => 'Front page',
-#   '@count min' => '@count minutes',
-# ];
+// $settings['locale_custom_strings_en'][''] = [
+//   'Home' => 'Front page',
+//   '@count min' => '@count minutes',
+// ];
 
 /**
  * A custom theme for the offline page:
@@ -652,7 +652,7 @@ $settings['update_free_access'] = false;
  *
  * Note: This setting does not apply to installation and update pages.
  */
-# $settings['maintenance_theme'] = 'claro';
+// $settings['maintenance_theme'] = 'claro';
 
 /**
  * PHP settings:
@@ -674,8 +674,8 @@ $settings['update_free_access'] = false;
  * and increase the limits of these variables.  For more information, see
  * http://php.net/manual/pcre.configuration.php.
  */
-# ini_set('pcre.backtrack_limit', 200000);
-# ini_set('pcre.recursion_limit', 200000);
+// ini_set('pcre.backtrack_limit', 200000);
+// ini_set('pcre.recursion_limit', 200000);
 
 /**
  * Configuration overrides.
@@ -699,13 +699,13 @@ $settings['update_free_access'] = false;
  * configuration values in settings.php will not fire any of the configuration
  * change events.
  */
-# $config['system.site']['name'] = 'My Drupal site';
-# $config['user.settings']['anonymous'] = 'Visitor';
+// $config['system.site']['name'] = 'My Drupal site';
+// $config['user.settings']['anonymous'] = 'Visitor';
 
 /**
  * Load services definition file.
  */
-$settings['container_yamls'][] = $app_root . '/' . $site_path . '/development.services.yml';
+// $settings['container_yamls'][] = $app_root . '/' . $site_path . '/development.services.yml';
 
 /**
  * Override the default service container class.
@@ -714,7 +714,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/development.se
  * tracking purposes, for testing a service container with an error condition or
  * to test a service container that throws an exception.
  */
-# $settings['container_base_class'] = '\Drupal\Core\DependencyInjection\Container';
+// $settings['container_base_class'] = '\Drupal\Core\DependencyInjection\Container';
 
 /**
  * Override the default yaml parser class.
@@ -723,7 +723,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/development.se
  * alternate implementation YAML parser. The class must implement the
  * \Drupal\Component\Serialization\SerializationInterface interface.
  */
-# $settings['yaml_parser_class'] = NULL;
+// $settings['yaml_parser_class'] = NULL;
 
 /**
  * Trusted host configuration.
@@ -764,7 +764,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/development.se
  *
  * @see https://www.drupal.org/docs/installing-drupal/trusted-host-settings
  */
-# $settings['trusted_host_patterns'] = [];
+// $settings['trusted_host_patterns'] = [];
 
 /**
  * The default list of directories that will be ignored by Drupal's file API.
@@ -776,10 +776,10 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/development.se
  * @see \Drupal\Core\File\FileSystemInterface::scanDirectory()
  * @see \Drupal\Core\Extension\ExtensionDiscovery::scanDirectory()
  */
-$settings['file_scan_ignore_directories'] = [
-  'node_modules',
-  'bower_components',
-];
+// $settings['file_scan_ignore_directories'] = [
+//   'node_modules',
+//   'bower_components',
+// ];
 
 /**
  * The default number of entities to update in a batch process.
@@ -789,7 +789,7 @@ $settings['file_scan_ignore_directories'] = [
  * if your hosting configuration (i.e. RAM allocation, CPU speed) allows for a
  * larger number of entities to be processed in a single batch run.
  */
-$settings['entity_update_batch_size'] = 50;
+// $settings['entity_update_batch_size'] = 50;
 
 /**
  * Entity update backup.
@@ -798,7 +798,7 @@ $settings['entity_update_batch_size'] = 50;
  * well as the original entity type and field storage definitions should be
  * retained after a successful entity update process.
  */
-$settings['entity_update_backup'] = true;
+// $settings['entity_update_backup'] = true;
 
 /**
  * Node migration type.
@@ -811,7 +811,7 @@ $settings['entity_update_backup'] = true;
  * complete node migrations. Set this to TRUE to force the use of the classic
  * node migrations.
  */
-$settings['migrate_node_migrate_type_classic'] = false;
+// $settings['migrate_node_migrate_type_classic'] = false;
 
 /**
  * The default settings for migration sources.
@@ -851,10 +851,10 @@ $settings['migrate_node_migrate_type_classic'] = false;
  * $settings['migrate_file_private_path'] = '/var/www/drupal7';
  * @endcode
  */
-# $settings['migrate_source_connection'] = '';
-# $settings['migrate_source_version'] = '';
-# $settings['migrate_file_public_path'] = '';
-# $settings['migrate_file_private_path'] = '';
+// $settings['migrate_source_connection'] = '';
+// $settings['migrate_source_version'] = '';
+// $settings['migrate_file_public_path'] = '';
+// $settings['migrate_file_private_path'] = '';
 
 /**
  * Load local development override configuration, if available.
@@ -870,6 +870,6 @@ $settings['migrate_node_migrate_type_classic'] = false;
  * Keep this code block at the end of this file to take full effect.
  */
 
-if (file_exists($app_root . '/sites/' . 'local.settings.php')) {
-  include $app_root . '/sites/' . 'local.settings.php';
+if (file_exists(DRUPAL_ROOT . '/sites/local/settings.php')) {
+  include DRUPAL_ROOT . '/sites/local/settings.php';
 }

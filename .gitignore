@@ -44,8 +44,8 @@ web/sites/development.services.yml
 web/sites/development.settings.yml
 web/sites/example.settings.local.php
 web/sites/example.sites.php
-web/sites/local.services.yml
-web/sites/local.settings.php
+web/sites/local/services.yml
+web/sites/local/settings.php
 web/sites/README.txt
 web/update.php
 web/web.config
