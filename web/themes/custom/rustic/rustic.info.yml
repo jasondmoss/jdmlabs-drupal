@@ -17,9 +17,9 @@ regions:
 libraries:
   #  - rustic/almond-css
   - rustic/rustic-assets
-libraries-override:
-  toolbar/toolbar:
-    js:
-      js/views/ToolbarVisualView.js: assets/js/override/ToolbarVisualView.js
+#libraries-override:
+#  toolbar/toolbar:
+#    js:
+#      js/views/ToolbarVisualView.js: assets/js/override/ToolbarVisualView.js
 ckeditor_stylesheets:
   - assets/css/system/ckeditor5.css
