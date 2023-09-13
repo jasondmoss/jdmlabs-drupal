@@ -91,6 +91,7 @@ README.txt
 autoload.php
 example.gitignore
 index.php
+composer.lock
 package-lock.json
 robots.txt
 update.php
