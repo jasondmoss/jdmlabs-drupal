@@ -3074,7 +3074,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/metatag.git",
-                "reference": "8cd0653fd3a585965642486aebe71ca54e8cb05e"
+                "reference": "55d729f70bd33b7ad05bcb7346c975a9adfb3162"
             },
             "require": {
                 "drupal/core": "^9.4 || ^10",
@@ -3097,8 +3097,8 @@
                     "dev-2.0.x": "2.0.x-dev"
                 },
                 "drupal": {
-                    "version": "2.0.0+2-dev",
-                    "datestamp": "1688136953",
+                    "version": "2.0.0+3-dev",
+                    "datestamp": "1694555743",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."

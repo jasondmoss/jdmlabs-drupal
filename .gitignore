@@ -60,6 +60,7 @@ web/web.config
 # Ignore non-custom parts of Drupal.
 web/libraries
 web/modules/features
+web/**/scratch
 
 
 # Ignore paths that contain user-generated content.
@@ -79,7 +80,7 @@ websites/simpletest
 #   $settings['container_yamls'][] = __DIR__ . '/services.local.yml';
 web/sites/*/services.local.yml
 
-.editorconfig
+#.editorconfig
 .csslintrc
 .eslintignore
 .eslintrc.json
@@ -90,6 +91,7 @@ README.txt
 autoload.php
 example.gitignore
 index.php
+package-lock.json
 robots.txt
 update.php
 web.config
